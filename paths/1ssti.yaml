@@ -1,0 +1,39 @@
+id: 1ssti
+
+info:
+  name: 1ssti
+  author: erickfernandox
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+
+
+http:
+  - raw:
+    - |+
+        POST / HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/x-www-form-urlencoded
+        Referer: "{{BaseURL}}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0
+        
+        template=%7B%7B7878%2A582%7D%7D&lang=%7B%7B7878%2A582%7D%7D&theme=%7B%7B7878%2A582%7D%7D&file=%7B%7B7878%2A582%7D%7D&page=%7B%7B7878%2A582%7D%7D&redirect=%7B%7B7878%2A582%7D%7D&view=%7B%7B7878%2A582%7D%7D&path=%7B%7B7878%2A582%7D%7D&url=%7B%7B7878%2A582%7D%7D&content=%7B%7B7878%2A582%7D%7D&locale=%7B%7B7878%2A582%7D%7D&style=%7B%7B7878%2A582%7D%7D&header=%7B%7B7878%2A582%7D%7D&footer=%7B%7B7878%2A582%7D%7D&script=%7B%7B7878%2A582%7D%7D&data=%7B%7B7878%2A582%7D%7D&config=%7B%7B7878%2A582%7D%7D&snippet=%7B%7B7878%2A582%7D%7D&block=%7B%7B7878%2A582%7D%7D&query=%7B%7B7878%2A582%7D%7D
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+
+      - type: word
+        words:
+          - '4584996'
+

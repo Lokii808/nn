@@ -1,0 +1,68 @@
+id: xss-ppath
+
+info:
+  name: xss-ppath
+  author: xandsz
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+http:
+  - method: GET
+    path:
+    
+      - "{{BaseURL}}%27%20teste=%3Cxss"     
+      - "{{BaseURL}}%22%20teste=%3Cxss"           
+      - "{{BaseURL}}%27%22%20teste=%3Cxss"           
+      - "{{BaseURL}}//%27%22%20teste=%3Cxss"                      
+      - "{{BaseURL}}//%27%22%20teste=%3Cxss%2f.."             
+      - "{{BaseURL}}////%27%22%20teste=%3Cxss"                  
+      - "{{BaseURL}}/%0A/%27%22%20teste=%3Cxss"                  
+      - "{{BaseURL}}/%0A%5c%27%22%20teste=%3Cxss"        
+      - "{{BaseURL}}/-->%27%22%20teste=%3Cxss"           
+      - "{{BaseURL}}/%27%22%20teste=%3Cxss"            
+      - "{{BaseURL}}/%27%22teste=%3Cxss"             
+      - "{{BaseURL}}/%27%22%09teste=%3Cxss"          
+      - "{{BaseURL}}/%27%20teste=%3Cxss"              
+      - "{{BaseURL}}/%22%20teste=%3Cxss"              
+      - "{{BaseURL}}/%0D/%27%22%20teste=%3Cxss"                   
+      - "{{BaseURL}}/%0D%5c%27%22%20teste=efx-UR/I%3Cxss"               
+      - "{{BaseURL}}/<>/%27%22%20teste=%3Cxss"                        
+      - "{{BaseURL}}/%5c%27%22%20teste=%3Cxss"                  
+      - "{{BaseURL}}/%27%22>%27%22%20teste=%3Cxss"
+      - "{{BaseURL}}/PFhzcw=="
+      - "{{BaseURL}}/;%3Cxss"
+      - "{{BaseURL}}/;%25%33%63%25%37%38%25%37%33%25%37%33"
+      - "{{BaseURL}}/%3Cxss"
+      - "{{BaseURL}}/?%3Cxss"     
+      - "{{BaseURL}}%0A/%27%22%20teste=%3Cxss"  
+      - "{{BaseURL}}%0A%5c%27%22%20teste=%3Cxss"
+     
+      
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:                    
+          - "<xss"
+
+        condition: and
+
+      - type: word
+        words:
+          - "text/html"
+        part: header
+
+        condition: and
+
+      - type: status
+        status:
+          - 200
+          - 404

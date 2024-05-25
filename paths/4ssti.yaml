@@ -1,0 +1,41 @@
+id: 4ssti
+
+info:
+  name: 4ssti
+  author: erickfernandox
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+
+
+http:
+  - raw:
+    - |+
+        POST / HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/x-www-form-urlencoded
+        Referer: "{{BaseURL}}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0
+        
+
+        template=%23%7B7878%2A582%7D&lang=%23%7B7878%2A582%7D&theme=%23%7B7878%2A582%7D&file=%23%7B7878%2A582%7D&page=%23%7B7878%2A582%7D&redirect=%23%7B7878%2A582%7D&view=%23%7B7878%2A582%7D&path=%23%7B7878%2A582%7D&url=%23%7B7878%2A582%7D&content=%23%7B7878%2A582%7D&locale=%23%7B7878%2A582%7D&style=%23%7B7878%2A582%7D&header=%23%7B7878%2A582%7D&footer=%23%7B7878%2A582%7D&script=%23%7B7878%2A582%7D&data=%23%7B7878%2A582%7D&config=%23%7B7878%2A582%7D&snippet=%23%7B7878%2A582%7D&block=%23%7B7878%2A582%7D&query=%23%7B7878%2A582%7D
+
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+
+      - type: word
+        words:
+          - '4584996'
+

