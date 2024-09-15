@@ -1,11 +1,11 @@
-// Código malicioso para executar no servidor
-const { exec } = require('child_process');
+const fs = require('fs');
+const path = '/tmp/exploit_successful';
 
-// Executar um comando malicioso
-exec('touch /tmp/poc_executed', (error, stdout, stderr) => {
-    if (error) {
-        console.error(`Erro ao executar o comando: ${error.message}`);
-        return;
+// Criar um arquivo para provar a execução do código
+fs.writeFile(path, 'Exploit foi executado com sucesso!', (err) => {
+    if (err) {
+        console.error('Erro ao criar o arquivo:', err);
+        process.exit(1);
     }
-    console.log(`Resultado do comando: ${stdout}`);
+    console.log('Arquivo criado com sucesso:', path);
 });
