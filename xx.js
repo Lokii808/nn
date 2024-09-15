@@ -1,14 +1,8 @@
-const fs = require('fs');
-const path = require('path');
-
-// Caminho para o arquivo que você deseja ler
-const filePath = path.join(__dirname, 'flag.txt');
-
-// Ler o conteúdo do arquivo
-fs.readFile(filePath, 'utf8', (err, data) => {
+const { exec } = require('child_process');
+exec('whoami', (err, stdout, stderr) => {
     if (err) {
-        console.error('Error reading file:', err);
+        console.error(`Error: ${err.message}`);
         return;
     }
-    console.log('File content:', data);
+    console.log(`User: ${stdout}`);
 });
