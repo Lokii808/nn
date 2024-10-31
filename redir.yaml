@@ -1,0 +1,31 @@
+id: open-redirect-detection
+
+info:
+  name: Open Redirect Detection
+  author: Seu Nome
+  severity: medium
+  description: |
+    Detecta vulnerabilidades de Open Redirect em URLs fornecidos.
+  tags: open-redirect, detection
+
+http:
+  - method: GET
+    path:
+
+      - "{{BaseURL}}/oauth/authorize?acr_values=https%3A%2F%2Fwebhook.site%2F6d4ee0d7-cff9-459d-bed8-832686f8158c&client_id=https%3A%2F%2Fwebhook.site%2F6d4ee0d7-cff9-459d-bed8-832686f8158c&prompt=https%3A%2F%2Fwebhook.site%2F6d4ee0d7-cff9-459d-bed8-832686f8158c&redirect_uri=https%3A%2F%2Fevil.com"
+            
+    stop-at-first-match: true
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: header
+        words:
+          - 'Location: https://evil.com/%2F'
+          - 'Location: https://evil.com'
+          - 'Location: http://evil.com'
+          - 'Location: evil.com'
+      - type: status
+        status: 
+          - 302
+          - 301
+          - 307
