@@ -1,1 +1,1 @@
-body { background: url("javascript:alert(1)"); }
+alert(document.domain);
