@@ -1,0 +1,33 @@
+id: checker_2
+
+info:
+  name: xss-fuzz
+  author: xandsz
+  severity: medium
+  description: "Verifica parâmetros ocultos que refletem dentro do HTML da página."
+  classification:
+    cvss-score: 6.1
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/login-widget/widget.html"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "widgetName should arrive from urlParams"
+      - type: word
+        part: header
+        words:
+          - "text/html"
+      - type: status
+        status:
+          - 200
